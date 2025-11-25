@@ -11,9 +11,49 @@ import { SITE_CONFIG } from '../../data/config';
 
   <div class="mb-12">
     <p class="mb-4 text-sm opacity-90">Comparte tus fotos con nosotros en Dots</p>
-    <Button href={SITE_CONFIG.links.dotsApp} text="Ver en Dots" target="_blank" />
+    
+    <div id="dots-trigger" class="inline-block">
+      <Button href="#" text="Ver en Dots" />
+    </div>
   </div>
 
   <h2 class="font-serif text-3xl md:text-4xl mb-4">¡Los esperamos!</h2>
   <p class="text-xs uppercase tracking-widest opacity-60">David & Abigail 2025</p>
+
+  <dialog id="dots-modal" class="backdrop:bg-black/60 p-8 rounded-sm shadow-2xl border border-wedding-soft bg-white text-center m-auto max-w-sm">
+    <p class="text-wedding-primary font-serif text-2xl mb-6">Aun es muy pronto, espera a nuestro gran día ❤️</p>
+    <button id="close-modal" class="bg-wedding-primary text-white px-6 py-2 rounded-sm text-xs uppercase tracking-widest hover:bg-wedding-secondary transition-colors">
+      Entendido
+    </button>
+  </dialog>
 </footer>
+
+<script>
+  // Lógica simple para el modal
+  const trigger = document.getElementById('dots-trigger');
+  const modal = document.getElementById('dots-modal') as HTMLDialogElement;
+  const closeBtn = document.getElementById('close-modal');
+
+  if (trigger && modal && closeBtn) {
+    // Abrir
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault(); // Evita que el enlace '#' haga scroll hacia arriba
+      modal.showModal();
+    });
+
+    // Cerrar con botón
+    closeBtn.addEventListener('click', () => {
+      modal.close();
+    });
+
+    // Cerrar haciendo click fuera del modal (backdrop)
+    modal.addEventListener('click', (e) => {
+      const rect = modal.getBoundingClientRect();
+      const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
+      if (!isInDialog) {
+        modal.close();
+      }
+    });
+  }
+</script>

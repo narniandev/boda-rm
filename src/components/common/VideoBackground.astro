@@ -1,4 +1,4 @@
-<div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+<div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none bg-black">
   <video 
     id="hero-video"
     autoplay 
@@ -6,21 +6,32 @@
     muted 
     playsinline 
     preload="auto"
-    class="absolute inset-0 w-full h-full object-cover z-0"
+    poster={`${import.meta.env.BASE_URL}video/poster.jpg`}
+    class="absolute inset-0 w-full h-full object-cover z-0 opacity-0 transition-opacity duration-1000"
   >
-    <source src={`${import.meta.env.BASE_URL}video/bg-video.mp4`} type="video/mp4" />
+    <source src={`${import.meta.env.BASE_URL}video/bg-boda.mp4`} type="video/mp4" />
   </video>
+
+  <div 
+    class="absolute inset-0 w-full h-full bg-cover bg-center z-[-1]"
+    style={`background-image: url('${import.meta.env.BASE_URL}video/poster.jpg');`}
+  >
+  </div>
 
   <div class="absolute inset-0 bg-black/40 z-10"></div>
 </div>
 
 <script>
-  // Script de seguridad para forzar reproducción en móviles
   const video = document.getElementById('hero-video') as HTMLVideoElement;
+
   if (video) {
-    video.muted = true; // Requerido por navegadores
-    video.play().catch((error) => {
-      console.log("Autoplay bloqueado, intentando forzar:", error);
+    video.addEventListener('canplay', () => {
+      video.classList.remove('opacity-0');
+    });
+
+    video.muted = true;
+    video.play().catch(() => {
+      console.log("Autoplay bloqueado. Se muestra poster.");
     });
   }
 </script>

@@ -1,19 +1,24 @@
 ---
 interface Props {
   guestName: string;
-  guestType?: string; // Simplificamos el tipo para evitar conflictos
+  guestType?: string;
   guestsCount: number;
 }
 
 const { guestName, guestType = 'group', guestsCount } = Astro.props;
 
+// Lógica de Saludo
 const getGreeting = (type: string) => {
-  // Normalizamos a minusculas para evitar errores de tipeo en el JSON
   const safeType = type.toLowerCase();
   if (safeType === 'male') return 'Querido';
   if (safeType === 'female') return 'Querida';
   return 'Queridos';
 };
+
+// Lógica de Texto Principal (Singular vs Plural)
+// Si es 'group' o guestsCount > 1 usamos plural, sino singular
+const isPlural = guestType.toLowerCase() === 'group' || guestsCount > 1;
+const inviteText = isPlural ? "invitarles" : "invitarle";
 ---
 
 <section class="relative pt-12 pb-8 px-6 bg-white text-center mt-[-20px] rounded-t-[3rem] z-20 shadow-[-10px_-10px_30px_rgba(0,0,0,0.1)]">
@@ -27,7 +32,7 @@ const getGreeting = (type: string) => {
   </h2>
 
   <p class="font-cinzel text-wedding-primary/80 text-sm md:text-base leading-relaxed max-w-prose mx-auto mb-8">
-    Nos complace invitarlos a celebrar con nosotros el día más especial de nuestras vidas.
+    Tenemos el gusto de {inviteText} a nuestra unión matrimonial y celebrar con nosotros este día tan especial.
   </p>
 
   <div class="inline-block border-t border-b border-wedding-soft/30 py-2 px-6">

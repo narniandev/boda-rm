@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-wedding-primary: #420C16;
-  --color-wedding-secondary: #791124;
-  --color-wedding-accent: #657C72;
-  --color-wedding-soft: #D1A39D;
-  --color-wedding-light: #EFE1D6;
+  --color-wedding-primary: #430012;
+  --color-wedding-secondary: #6d001d;
+  --color-wedding-accent: #688277;
+  --color-wedding-soft: #d1aba2;
+  --color-wedding-light: #e8d7d0;
   
   --font-fleur: "Fleur De Leah", cursive;
   --font-corinthia: "Corinthia", cursive;
@@ -25,7 +25,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: var(--color-wedding-light);
+  background-color: #fff;
   color: var(--color-wedding-primary);
   font-family: var(--font-cinzel); /* Fuente base elegante */
   overflow-x: hidden;

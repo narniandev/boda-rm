@@ -3,30 +3,42 @@ import { SITE_CONFIG } from '../../data/config';
 ---
 
 <section class="py-16 px-6 bg-white flex flex-col items-center">
-  <div class="mb-8 w-64 h-64 relative rounded-full overflow-hidden border-4 border-wedding-soft/30 shadow-xl">
-    <img 
-      src={`${import.meta.env.BASE_URL}images/novios.jpg`} 
-      alt="David y Abigail" 
-      class="w-full h-full object-cover"
-    />
+  <div class="flex gap-8 justify-center mb-8">
+    
+    <div class="flex flex-col items-center gap-4">
+      <div class="w-32 h-32 rounded-full overflow-hidden shadow-lg group cursor-pointer transition-transform duration-300 hover:scale-105">
+         <img 
+          src={`${import.meta.env.BASE_URL}images/David.png`} 
+          alt="David"
+          class="w-full h-full object-cover filter grayscale brightness-110 transition-all duration-500 group-hover:grayscale-0 group-hover:brightness-100" 
+         />
+      </div>
+      <span class="font-serif text-xl text-wedding-primary">{SITE_CONFIG.couple.groom || "David"}</span>
+    </div>
+
+    <div class="flex flex-col items-center gap-4">
+      <div class="w-32 h-32 rounded-full overflow-hidden shadow-lg group cursor-pointer transition-transform duration-300 hover:scale-105">
+         <img 
+          src={`${import.meta.env.BASE_URL}images/Abby.png`} 
+          alt="Abigail"
+          class="w-full h-full object-cover filter grayscale brightness-110 transition-all duration-500 group-hover:grayscale-0 group-hover:brightness-100" 
+         />
+      </div>
+      <span class="font-serif text-xl text-wedding-primary">{SITE_CONFIG.couple.bride || "Abigail"}</span>
+    </div>
   </div>
 
-  <div class="flex gap-4 justify-center items-center mb-10">
-    <span class="font-serif text-2xl text-wedding-primary">{SITE_CONFIG.couple.groom}</span>
-    <span class="font-italianno text-4xl text-wedding-secondary">&</span>
-    <span class="font-serif text-2xl text-wedding-primary">{SITE_CONFIG.couple.bride}</span>
-  </div>
-
-  <div class="mt-4 text-center border-t border-wedding-light pt-8 w-full max-w-lg">
+  <div class="mt-8 text-center w-full max-w-lg">
     <p class="text-sm mb-6 text-wedding-secondary uppercase tracking-widest">Con la bendición de nuestros padres</p>
-    <div class="flex flex-col md:flex-row justify-center gap-8 text-wedding-primary">
+    
+    <div class="flex flex-col md:flex-row justify-center gap-8 md:gap-12 text-wedding-primary">
       <div>
-        <h3 class="font-serif text-xl">{SITE_CONFIG.couple.parentsGroom}</h3>
-        <p class="text-xs font-light italic mt-1 text-gray-400">Padres del Novio</p>
+        <h3 class="font-serif text-xl mb-1">{SITE_CONFIG.couple.parentsGroom}</h3>
+        <p class="text-xs font-sans text-black opacity-60 uppercase tracking-wide">Padres del Novio</p>
       </div>
       <div>
-        <h3 class="font-serif text-xl">{SITE_CONFIG.couple.parentsBride}</h3>
-        <p class="text-xs font-light italic mt-1 text-gray-400">Padres de la Novia</p>
+        <h3 class="font-serif text-xl mb-1">{SITE_CONFIG.couple.parentsBride}</h3>
+        <p class="text-xs font-sans text-black opacity-60 uppercase tracking-wide">Padres de la Novia</p>
       </div>
     </div>
   </div>

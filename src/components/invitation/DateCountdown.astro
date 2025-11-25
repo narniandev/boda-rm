@@ -2,15 +2,18 @@
 import { SITE_CONFIG } from '../../data/config';
 ---
 
-<section class="py-16 px-6 bg-wedding-primary text-wedding-light text-center">
+<section class="py-16 px-6 bg-wedding-primary text-wedding-light text-center overflow-hidden">
   <h2 class="font-serif text-3xl mb-2">El Gran Día</h2>
   <p class="text-xl mb-1">14 de Diciembre, 2025</p>
   <p class="text-lg font-bold mb-8">3:00 PM</p>
 
-  <div class="my-8 flex justify-center">
-    <div class="w-[1px] h-16 bg-wedding-soft relative">
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 border border-wedding-soft rounded-full"></div>
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-wedding-soft rounded-full"></div>
+  <div class="my-8 flex justify-center relative">
+    <div class="w-16 h-16 border border-wedding-soft rounded-full relative flex items-center justify-center">
+      <div class="w-1 h-1 bg-wedding-soft rounded-full z-10"></div>
+      
+      <div class="absolute w-[1px] h-4 bg-wedding-soft origin-bottom bottom-1/2 left-1/2 -translate-x-1/2 animate-spin-slow"></div>
+      
+      <div class="absolute w-[1px] h-6 bg-wedding-soft origin-bottom bottom-1/2 left-1/2 -translate-x-1/2 animate-spin-fast"></div>
     </div>
   </div>
 
@@ -23,6 +26,7 @@ import { SITE_CONFIG } from '../../data/config';
 </section>
 
 <script>
+  // ... (Tu script del countdown se mantiene igual) ...
   const countdownEl = document.getElementById('countdown');
   if (countdownEl && countdownEl.dataset.date) {
     const targetDate = new Date(countdownEl.dataset.date).getTime();
@@ -51,3 +55,16 @@ import { SITE_CONFIG } from '../../data/config';
     updateCountdown();
   }
 </script>
+
+<style>
+  @keyframes spin {
+    from { transform: translateX(-50%) rotate(0deg); }
+    to { transform: translateX(-50%) rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spin 12s linear infinite; /* Hora da vuelta cada 12s */
+  }
+  .animate-spin-fast {
+    animation: spin 2s linear infinite; /* Minuto da vuelta cada 2s */
+  }
+</style>

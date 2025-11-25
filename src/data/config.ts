@@ -23,6 +23,6 @@ export const SITE_CONFIG = {
   },
   links: {
     whatsapp: "50488894918",
-    dotsApp: "#"
+    dotsApp: "https://maps.app.goo.gl/tj9wJ99Q81b4EKuL9"
   }
 };

@@ -7,15 +7,68 @@ import { SITE_CONFIG } from '../../data/config';
   
   <VideoBackground />
 
-  <div class="relative z-20 flex flex-col gap-4 text-white">
-    <p class="uppercase tracking-widest text-xs mb-2 text-white/90">Nos Casamos</p>
+  <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/20 via-white/5 to-black/60 backdrop-blur-[1px] pointer-events-none"></div>
+
+  <div class="relative z-20 flex flex-col items-center gap-2 text-white animate-intro">
     
-    <h1 class="font-serif text-5xl md:text-6xl leading-tight text-white drop-shadow-lg">
-      {SITE_CONFIG.couple.groom_name} <br />
-      <span class="text-2xl">&</span> <br />
-      {SITE_CONFIG.couple.bride_name}
-    </h1>
+    <p class="font-cinzel uppercase tracking-[0.3em] text-xs mb-2 text-white/80">Nos Casamos</p>
     
-    <p class="mt-4 text-lg font-light italic text-white/90">14 de Diciembre, 2025</p>
+    <div class="flex flex-col items-center justify-center">
+      
+      <h1 class="font-corinthia text-[5rem] md:text-9xl shine-text px-4 pb-2 leading-normal z-10">
+        {SITE_CONFIG.couple.groom_name}
+      </h1>
+      
+      <span class="font-fleur text-3xl md:text-5xl text-white/90 -my-10 z-20 pb-4 relative drop-shadow-lg">
+        &
+      </span>
+      
+      <h1 class="font-corinthia text-[5rem] md:text-9xl shine-text px-4 pt-2 leading-normal z-10">
+        {SITE_CONFIG.couple.bride_name}
+      </h1>
+
+    </div>
+    
+    <p class="mt-2 font-cinzel text-lg font-light text-white/90 tracking-widest">14 de Diciembre, 2025</p>
   </div>
 </section>
+
+<style>
+  .shine-text {
+    background: linear-gradient(
+      to right, 
+      #ffffff 20%, 
+      #e6e6e6 40%, 
+      #ffefe8 50%, 
+      #e6e6e6 60%, 
+      #ffffff 80%
+    );
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 6s linear infinite;
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3));
+  }
+
+  @keyframes shine {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+  .animate-intro {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.5s ease-out forwards;
+    animation-delay: 1.2s;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
