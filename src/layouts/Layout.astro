@@ -6,6 +6,8 @@ interface Props {
 }
 
 const { title = "David & Abigail" } = Astro.props;
+const videoUrl = "https://res.cloudinary.com/cloudinary-autoshn/video/upload/q_auto,f_auto,vc_auto/v1764049277/bg-boda_cxx3sq.mp4";
+const cacheBuster = `?v=${Date.now()}`;
 ---
 
 <!doctype html>
@@ -18,6 +20,8 @@ const { title = "David & Abigail" } = Astro.props;
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Carattere&family=Cinzel:wght@400..900&family=Corinthia:wght@400;700&family=Fleur+De+Leah&family=Italianno&display=swap" rel="stylesheet">
+		
+		<link rel="preload" as="video" href={videoUrl + cacheBuster} type="video/mp4" />
 		
 		<title>{title}</title>
 	</head>
